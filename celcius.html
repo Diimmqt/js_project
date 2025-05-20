@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Suhu ke Celsius</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        input, select, button {
+            margin: 5px;
+            padding: 5px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <center class="container">
+        <h2>Kalkulator Suhu ke Celsius</h2>
+        <form action="">
+            <input type="number" id="suhu" placeholder="Masukkan suhu">
+            <select id="tipe">
+                <option value="FtoC">Fahrenheit ke Celsius</option>
+                <option value="KtoC">Kelvin ke Celsius</option>
+            </select>
+            <button type="button" id="konversi">Konversi</button>
+        </form>
+
+        <h3>Hasil</h3>
+        <p><span id="hasil"></span></p>
+    </center>
+
+    <script>
+        const tombol = document.getElementById("konversi");
+
+        tombol.addEventListener("click", function() {
+            const suhu = parseFloat(document.getElementById("suhu").value);
+            const tipe = document.getElementById("tipe").value;
+            const tampilHasil = document.getElementById("hasil");
+
+            if (isNaN(suhu)) {
+                alert("Masukkan suhu yang valid!");
+                return;
+            }
+
+            let hasil;
+
+            if (tipe === "FtoC") {
+                hasil = (suhu - 32) * 5/9;
+                tampilHasil.innerHTML = suhu + "°F = " + hasil.toFixed(2) + "°C";
+            } else if (tipe === "KtoC") {
+                hasil = suhu - 273.15;
+                tampilHasil.innerHTML = suhu + "K = " + hasil.toFixed(2) + "°C";
+            }
+        });
+    </script>
+</body>
+</html>
