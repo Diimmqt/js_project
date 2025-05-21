@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Menghitung Kecepatan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin-top: 50px;
+      text-align: center;
+    }
+    input, button {
+      margin: 5px;
+      padding: 8px;
+      width: 200px;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    #hasil {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Menghitung Kecepatan</h2>
+  <input type="number" id="jarak" placeholder="Jarak (km)" min="0" />
+  <br />
+  <input type="number" id="jam" placeholder="Waktu tempuh - Jam" min="0" />
+  <br />
+  <input type="number" id="menit" placeholder="Waktu tempuh - Menit" min="0" max="59" />
+  <br />
+  <button onclick="hitungKecepatan()">Hitung Kecepatan</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitungKecepatan() {
+      const jarak = parseFloat(document.getElementById("jarak").value);
+      const jam = parseInt(document.getElementById("jam").value);
+      const menit = parseInt(document.getElementById("menit").value);
+      const hasil = document.getElementById("hasil");
+
+      if (isNaN(jarak) || jarak <= 0) {
+        alert("Masukkan jarak yang valid (> 0)!");
+        return;
+      }
+      if (isNaN(jam) || jam < 0) {
+        alert("Masukkan jam yang valid (0 atau lebih)!");
+        return;
+      }
+      if (isNaN(menit) || menit < 0 || menit > 59) {
+        alert("Masukkan menit antara 0 sampai 59!");
+        return;
+      }
+
+      const waktuJam = jam + menit / 60;
+      if (waktuJam === 0) {
+        alert("Waktu tempuh tidak boleh nol!");
+        return;
+      }
+
+      const kecepatan = jarak / waktuJam;
+
+      hasil.textContent = `Kecepatan rata-rata: ${kecepatan.toFixed(2)} km/jam.`;
+    }
+  </script>
+</body>
+</html>

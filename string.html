@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Membalik String</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        input, button {
+            margin: 5px;
+            padding: 5px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <center class="container">
+        <h2>Program Membalik String</h2>
+        <form action="">
+            <input type="text" id="teks" placeholder="Masukkan teks">
+            <button type="button" id="balik">Balikkan</button>
+        </form>
+
+        <h3>Hasil</h3>
+        <p><span id="hasil"></span></p>
+    </center>
+
+    <script>
+        const tombol = document.getElementById("balik");
+
+        tombol.addEventListener("click", function() {
+            const teks = document.getElementById("teks").value;
+            const tampilHasil = document.getElementById("hasil");
+
+            if (teks === "") {
+                alert("Masukkan teks terlebih dahulu!");
+                return;
+            }
+
+            // Membalik string
+            const hasil = teks.split("").reverse().join("");
+
+            tampilHasil.innerHTML = hasil;
+        });
+    </script>
+</body>
+</html>

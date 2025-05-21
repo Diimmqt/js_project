@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urutkan Angka</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        input, button, select {
+            margin: 5px;
+            padding: 5px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <center class="container">
+        <h2>Urutkan Angka</h2>
+        <form action="">
+            <input type="text" id="angka" placeholder="Contoh: 5,8,1,9,3"><br>
+
+            <label for="urutan">Urutan: </label>
+            <select id="urutan">
+                <option value="asc">Terkecil ke Terbesar</option>
+                <option value="desc">Terbesar ke Terkecil</option>
+            </select><br>
+
+            <button type="button" id="urutkan">Urutkan</button>
+        </form>
+
+        <h3>Hasil</h3>
+        <p><span id="hasil"></span></p>
+    </center>
+
+    <script>
+        const tombol = document.getElementById("urutkan");
+
+        tombol.addEventListener("click", function() {
+            const input = document.getElementById("angka").value;
+            const urutan = document.getElementById("urutan").value;
+            const tampilHasil = document.getElementById("hasil");
+
+            if (input.trim() === "") {
+                alert("Masukkan beberapa angka dipisah koma!");
+                return;
+            }
+
+            // Ubah string jadi array angka
+            const angkaArray = input.split(",").map(Number);
+
+            // Cek validitas angka
+            if (angkaArray.some(isNaN)) {
+                alert("Pastikan semua input adalah angka yang valid!");
+                return;
+            }
+
+            // Urutkan angka
+            if (urutan === "asc") {
+                angkaArray.sort((a, b) => a - b);
+            } else {
+                angkaArray.sort((a, b) => b - a);
+            }
+
+            tampilHasil.innerHTML = "Hasil urutan: " + angkaArray.join(", ");
+        });
+    </script>
+</body>
+</html>

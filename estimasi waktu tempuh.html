@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Estimasi Waktu Tempuh</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+            text-align: center;
+        }
+        input, button {
+            margin: 5px;
+            padding: 8px;
+            width: 200px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        #hasil {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Estimasi Waktu Tempuh</h2>
+    <input type="number" id="jarak" placeholder="Jarak (km)" />
+    <br />
+    <input type="number" id="kecepatan" placeholder="Kecepatan (km/jam)" />
+    <br />
+    <button onclick="hitungWaktu()">Hitung Waktu Tempuh</button>
+
+    <div id="hasil"></div>
+
+    <script>
+        function hitungWaktu() {
+            const jarak = parseFloat(document.getElementById("jarak").value);
+            const kecepatan = parseFloat(document.getElementById("kecepatan").value);
+            const hasil = document.getElementById("hasil");
+
+            if (isNaN(jarak) || jarak <= 0) {
+                alert("Masukkan jarak yang valid!");
+                return;
+            }
+            if (isNaN(kecepatan) || kecepatan <= 0) {
+                alert("Masukkan kecepatan yang valid!");
+                return;
+            }
+
+            const waktuJam = jarak / kecepatan;
+            const jam = Math.floor(waktuJam);
+            const menit = Math.round((waktuJam - jam) * 60);
+
+            hasil.textContent = `Estimasi waktu tempuh: ${jam} jam ${menit} menit.`;
+        }
+    </script>
+</body>
+</html>

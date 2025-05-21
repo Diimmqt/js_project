@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kalkulator Diskon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+            text-align: center;
+        }
+        input, button {
+            margin: 5px;
+            padding: 8px;
+            width: 200px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        #hasil {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Kalkulator Diskon</h2>
+    <input type="number" id="harga" placeholder="Harga asli (Rp)" />
+    <br />
+    <input type="number" id="diskon" placeholder="Diskon (%)" />
+    <br />
+    <button onclick="hitungDiskon()">Hitung Harga Diskon</button>
+
+    <div id="hasil"></div>
+
+    <script>
+        function hitungDiskon() {
+            const harga = parseFloat(document.getElementById("harga").value);
+            const diskon = parseFloat(document.getElementById("diskon").value);
+
+            if (isNaN(harga) || harga <= 0) {
+                alert("Masukkan harga yang valid!");
+                return;
+            }
+            if (isNaN(diskon) || diskon < 0 || diskon > 100) {
+                alert("Masukkan persen diskon antara 0 sampai 100!");
+                return;
+            }
+
+            const nilaiDiskon = harga * (diskon / 100);
+            const hargaAkhir = harga - nilaiDiskon;
+
+            document.getElementById("hasil").innerHTML = 
+                `Harga asli: Rp ${harga.toFixed(0)}<br>` +
+                `Diskon: ${diskon}% = Rp ${nilaiDiskon.toFixed(0)}<br>` +
+                `Harga setelah diskon: Rp ${hargaAkhir.toFixed(0)}`;
+        }
+    </script>
+</body>
+</html>

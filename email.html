@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Validasi Email</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+            text-align: center;
+        }
+        input, button {
+            margin: 5px;
+            padding: 8px;
+            width: 250px;
+        }
+        #hasil {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Validasi Email</h2>
+    <input type="text" id="email" placeholder="Masukkan alamat email" />
+    <br />
+    <button onclick="validasiEmail()">Cek Email</button>
+
+    <div id="hasil"></div>
+
+    <script>
+        function validasiEmail() {
+            const email = document.getElementById("email").value.trim();
+            const hasil = document.getElementById("hasil");
+
+            // Pola regex sama seperti di Python
+            const pola = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (pola.test(email)) {
+                hasil.style.color = "green";
+                hasil.textContent = `'${email}' adalah alamat email yang valid.`;
+            } else {
+                hasil.style.color = "red";
+                hasil.textContent = `'${email}' bukan alamat email yang valid.`;
+            }
+        }
+    </script>
+</body>
+</html>

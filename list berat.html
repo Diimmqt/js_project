@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Berat Barang</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        input, button {
+            margin: 5px;
+            padding: 5px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin: 0 auto;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <center class="container">
+        <h2>Daftar Berat Barang</h2>
+
+        <input type="text" id="nama" placeholder="Nama Barang">
+        <input type="number" id="berat" placeholder="Berat (kg)">
+        <button onclick="tambahBarang()">Tambah</button>
+
+        <h3>Daftar Barang</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Barang</th>
+                    <th>Berat (kg)</th>
+                </tr>
+            </thead>
+            <tbody id="daftarBarang"></tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="2">Total Berat</th>
+                    <th id="totalBerat">0</th>
+                </tr>
+            </tfoot>
+        </table>
+    </center>
+
+    <script>
+        let barang = [];
+
+        function tambahBarang() {
+            const nama = document.getElementById("nama").value.trim();
+            const berat = parseFloat(document.getElementById("berat").value);
+
+            if (nama === "" || isNaN(berat) || berat <= 0) {
+                alert("Masukkan nama barang dan berat yang valid!");
+                return;
+            }
+
+            barang.push({ nama: nama, berat: berat });
+            document.getElementById("nama").value = "";
+            document.getElementById("berat").value = "";
+
+            tampilkanBarang();
+        }
+
+        function tampilkanBarang() {
+            const daftar = document.getElementById("daftarBarang");
+            const totalBeratElem = document.getElementById("totalBerat");
+            daftar.innerHTML = "";
+            let total = 0;
+
+            barang.forEach(function(item, index) {
+                const row = document.createElement("tr");
+                row.innerHTML = `<td>${index + 1}</td><td>${item.nama}</td><td>${item.berat}</td>`;
+                daftar.appendChild(row);
+                total += item.berat;
+            });
+
+            totalBeratElem.innerText = total.toFixed(2);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Antrian</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        input, button {
+            margin: 5px;
+            padding: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 3px 0;
+        }
+    </style>
+</head>
+<body>
+    <center class="container">
+        <h2>Simulasi Antrian</h2>
+
+        <input type="text" id="nama" placeholder="Masukkan nama">
+        <button onclick="tambahAntrian()">Tambah</button>
+        <button onclick="panggilAntrian()">Panggil</button>
+
+        <h3>Daftar Antrian</h3>
+        <ul id="daftarAntrian"></ul>
+
+        <h3>Antrian Dipanggil</h3>
+        <p id="antrianDipanggil">Belum ada yang dipanggil.</p>
+    </center>
+
+    <script>
+        let antrian = [];
+
+        function tambahAntrian() {
+            const nama = document.getElementById("nama").value.trim();
+            if (nama === "") {
+                alert("Masukkan nama terlebih dahulu!");
+                return;
+            }
+            antrian.push(nama);
+            document.getElementById("nama").value = "";
+            tampilkanAntrian();
+        }
+
+        function panggilAntrian() {
+            if (antrian.length === 0) {
+                alert("Antrian kosong!");
+                return;
+            }
+            const dipanggil = antrian.shift();
+            document.getElementById("antrianDipanggil").innerText = dipanggil;
+            tampilkanAntrian();
+        }
+
+        function tampilkanAntrian() {
+            const daftar = document.getElementById("daftarAntrian");
+            daftar.innerHTML = "";
+            antrian.forEach(function(item, index) {
+                const li = document.createElement("li");
+                li.textContent = (index + 1) + ". " + item;
+                daftar.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>

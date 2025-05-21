@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konversi Angka ke Romawi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        input, button {
+            margin: 5px;
+            padding: 5px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <center class="container">
+        <h2>Konversi Angka ke Romawi</h2>
+        <form action="">
+            <input type="number" id="angka" placeholder="Masukkan angka (1-3999)" min="1" max="3999">
+            <button type="button" id="konversi">Konversi</button>
+        </form>
+
+        <h3>Hasil</h3>
+        <p><span id="hasil"></span></p>
+    </center>
+
+    <script>
+        const tombol = document.getElementById("konversi");
+
+        tombol.addEventListener("click", function() {
+            const angka = parseInt(document.getElementById("angka").value);
+            const tampilHasil = document.getElementById("hasil");
+
+            if (isNaN(angka) || angka < 1 || angka > 3999) {
+                alert("Masukkan angka antara 1 sampai 3999!");
+                return;
+            }
+
+            tampilHasil.innerHTML = angka + " = " + toRomawi(angka);
+        });
+
+        function toRomawi(num) {
+            const romawi = [
+                { value: 1000, symbol: "M" },
+                { value: 900,  symbol: "CM" },
+                { value: 500,  symbol: "D" },
+                { value: 400,  symbol: "CD" },
+                { value: 100,  symbol: "C" },
+                { value: 90,   symbol: "XC" },
+                { value: 50,   symbol: "L" },
+                { value: 40,   symbol: "XL" },
+                { value: 10,   symbol: "X" },
+                { value: 9,    symbol: "IX" },
+                { value: 5,    symbol: "V" },
+                { value: 4,    symbol: "IV" },
+                { value: 1,    symbol: "I" }
+            ];
+
+            let hasil = "";
+
+            for (let i = 0; i < romawi.length; i++) {
+                while (num >= romawi[i].value) {
+                    hasil += romawi[i].symbol;
+                    num -= romawi[i].value;
+                }
+            }
+
+            return hasil;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Aritmatika</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        input, select, button {
+            margin: 5px;
+            padding: 5px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <center class="container">
+        <h2>Kalkulator Aritmatika</h2>
+        <form action="">
+            <input type="number" id="angka1" placeholder="Angka pertama">
+            <select id="operator">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">×</option>
+                <option value="/">÷</option>
+            </select>
+            <input type="number" id="angka2" placeholder="Angka kedua">
+            <button type="button" id="hitung">Hitung</button>
+        </form>
+
+        <h3>Hasil</h3>
+        <p><span id="hasil"></span></p>
+    </center>
+
+    <script>
+        const tombol = document.getElementById("hitung");
+
+        tombol.addEventListener("click", function() {
+            const angka1 = parseFloat(document.getElementById("angka1").value);
+            const angka2 = parseFloat(document.getElementById("angka2").value);
+            const operator = document.getElementById("operator").value;
+            const tampilHasil = document.getElementById("hasil");
+
+            if (isNaN(angka1) || isNaN(angka2)) {
+                alert("Masukkan kedua angka dengan benar!");
+                return;
+            }
+
+            let hasil;
+
+            switch (operator) {
+                case "+":
+                    hasil = angka1 + angka2;
+                    break;
+                case "-":
+                    hasil = angka1 - angka2;
+                    break;
+                case "*":
+                    hasil = angka1 * angka2;
+                    break;
+                case "/":
+                    if (angka2 === 0) {
+                        alert("Tidak bisa dibagi 0!");
+                        return;
+                    }
+                    hasil = angka1 / angka2;
+                    break;
+                default:
+                    alert("Operator tidak dikenal");
+                    return;
+            }
+
+            tampilHasil.innerHTML = "Hasil: " + hasil;
+        });
+    </script>
+</body>
+</html>

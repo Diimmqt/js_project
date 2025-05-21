@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cari Angka Terkecil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        input, button {
+            margin: 5px;
+            padding: 5px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <center class="container">
+        <h2>Cari Angka Terkecil</h2>
+        <form action="">
+            <input type="text" id="angka" placeholder="Contoh: 7,5,12,9,3">
+            <button type="button" id="cari">Cari Terkecil</button>
+        </form>
+
+        <h3>Hasil</h3>
+        <p><span id="hasil"></span></p>
+    </center>
+
+    <script>
+        const tombol = document.getElementById("cari");
+
+        tombol.addEventListener("click", function() {
+            const input = document.getElementById("angka").value;
+            const tampilHasil = document.getElementById("hasil");
+
+            if (input.trim() === "") {
+                alert("Masukkan beberapa angka dipisah koma!");
+                return;
+            }
+
+            // Ubah string jadi array angka
+            const angkaArray = input.split(",").map(Number);
+
+            // Cek validitas angka
+            if (angkaArray.some(isNaN)) {
+                alert("Pastikan semua input adalah angka yang valid!");
+                return;
+            }
+
+            // Cari angka terkecil
+            const terkecil = Math.min(...angkaArray);
+
+            tampilHasil.innerHTML = "Angka terkecil: " + terkecil;
+        });
+    </script>
+</body>
+</html>

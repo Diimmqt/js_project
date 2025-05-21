@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Akar Kuadrat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        input, button {
+            margin: 5px;
+            padding: 5px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <center class="container">
+        <h2>Kalkulator Akar Kuadrat</h2>
+        <form action="">
+            <input type="number" id="angka" placeholder="Masukkan angka">
+            <button type="button" id="hitung">Hitung Akar</button>
+        </form>
+
+        <h3>Hasil</h3>
+        <p><span id="hasil"></span></p>
+    </center>
+
+    <script>
+        const tombol = document.getElementById("hitung");
+
+        tombol.addEventListener("click", function() {
+            const angka = parseFloat(document.getElementById("angka").value);
+            const tampilHasil = document.getElementById("hasil");
+
+            if (isNaN(angka) || angka < 0) {
+                alert("Masukkan angka positif yang valid!");
+                return;
+            }
+
+            let hasil = Math.sqrt(angka);
+            tampilHasil.innerHTML = "√" + angka + " = " + hasil.toFixed(3);
+        });
+    </script>
+</body>
+</html>

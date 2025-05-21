@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Estimasi Jarak</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin-top: 50px;
+      text-align: center;
+    }
+    input, button {
+      margin: 5px;
+      padding: 8px;
+      width: 200px;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    #hasil {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Estimasi Jarak</h2>
+  <input type="number" id="jam" placeholder="Waktu tempuh - Jam" min="0" />
+  <br />
+  <input type="number" id="menit" placeholder="Waktu tempuh - Menit" min="0" max="59" />
+  <br />
+  <input type="number" id="kecepatan" placeholder="Kecepatan (km/jam)" min="0" />
+  <br />
+  <button onclick="hitungJarak()">Hitung Jarak</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitungJarak() {
+      const jam = parseInt(document.getElementById("jam").value);
+      const menit = parseInt(document.getElementById("menit").value);
+      const kecepatan = parseFloat(document.getElementById("kecepatan").value);
+      const hasil = document.getElementById("hasil");
+
+      if (isNaN(jam) || jam < 0) {
+        alert("Masukkan jam yang valid (0 atau lebih)!");
+        return;
+      }
+      if (isNaN(menit) || menit < 0 || menit > 59) {
+        alert("Masukkan menit antara 0 sampai 59!");
+        return;
+      }
+      if (isNaN(kecepatan) || kecepatan <= 0) {
+        alert("Masukkan kecepatan yang valid (> 0)!");
+        return;
+      }
+
+      const waktuJam = jam + menit / 60;
+      const jarak = waktuJam * kecepatan;
+
+      hasil.textContent = `Estimasi jarak tempuh: ${jarak.toFixed(2)} km.`;
+    }
+  </script>
+</body>
+</html>
