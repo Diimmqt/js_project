@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Faktorial Pengulangan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin-top: 50px;
+      text-align: center;
+    }
+    input, button {
+      margin: 5px;
+      padding: 8px;
+      width: 200px;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    #hasil {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Faktorial Dengan Pengulangan</h2>
+  <input type="number" id="angka" placeholder="Masukkan angka" min="0" />
+  <br />
+  <button onclick="hitungFaktorial()">Hitung Faktorial</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitungFaktorial() {
+      const angka = parseInt(document.getElementById("angka").value);
+      const hasil = document.getElementById("hasil");
+
+      if (isNaN(angka) || angka < 0) {
+        alert("Masukkan angka positif atau nol!");
+        return;
+      }
+
+      let faktorial = 1;
+      let proses = "";
+
+      for (let i = angka; i >= 1; i--) {
+        faktorial *= i;
+        proses += (i !== 1) ? `${i} × ` : `${i}`;
+      }
+
+      hasil.innerHTML = `Proses: ${proses} <br> Hasil: ${faktorial}`;
+    }
+  </script>
+</body>
+</html>

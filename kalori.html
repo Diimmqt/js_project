@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kalkulator Kalori</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    input, button {
+      margin: 5px;
+      padding: 8px;
+      width: 220px;
+    }
+    #hasil {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Kalkulator Kalori</h2>
+  <input type="number" id="berat" placeholder="Berat makanan (gram)">
+  <br>
+  <input type="number" id="kaloriPerGram" placeholder="Kalori per gram">
+  <br>
+  <button onclick="hitungKalori()">Hitung Kalori</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitungKalori() {
+      const berat = parseFloat(document.getElementById("berat").value);
+      const kaloriPerGram = parseFloat(document.getElementById("kaloriPerGram").value);
+      const hasil = document.getElementById("hasil");
+
+      if (isNaN(berat) || berat <= 0) {
+        alert("Masukkan berat makanan yang valid!");
+        return;
+      }
+
+      if (isNaN(kaloriPerGram) || kaloriPerGram <= 0) {
+        alert("Masukkan kalori per gram yang valid!");
+        return;
+      }
+
+      const totalKalori = berat * kaloriPerGram;
+
+      hasil.textContent = `Total kalori: ${totalKalori.toFixed(2)} kkal`;
+    }
+  </script>
+</body>
+</html>

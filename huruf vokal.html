@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hitung Huruf Vokal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    textarea, button {
+      margin: 5px;
+      padding: 8px;
+      width: 300px;
+    }
+    #hasil {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Hitung Jumlah Huruf Vokal</h2>
+  <textarea id="kalimat" rows="4" placeholder="Masukkan kalimat di sini..."></textarea>
+  <br>
+  <button onclick="hitungVokal()">Hitung Vokal</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitungVokal() {
+      const kalimat = document.getElementById("kalimat").value.toLowerCase();
+      const hasil = document.getElementById("hasil");
+
+      if (kalimat.trim() === "") {
+        hasil.textContent = "Masukkan kalimat terlebih dahulu!";
+        return;
+      }
+
+      let jumlahVokal = 0;
+      const vokal = ['a', 'i', 'u', 'e', 'o'];
+
+      for (let i = 0; i < kalimat.length; i++) {
+        if (vokal.includes(kalimat[i])) {
+          jumlahVokal++;
+        }
+      }
+
+      hasil.textContent = `Jumlah huruf vokal: ${jumlahVokal}`;
+    }
+  </script>
+</body>
+</html>

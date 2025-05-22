@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hitung Huruf per Kata</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    textarea, button {
+      margin: 5px;
+      padding: 8px;
+      width: 300px;
+    }
+    #hasil {
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: normal;
+      text-align: left;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <h2>Hitung Huruf di Setiap Kata</h2>
+  <textarea id="kalimat" rows="4" placeholder="Masukkan kalimat di sini..."></textarea>
+  <br>
+  <button onclick="hitungHurufPerKata()">Hitung Huruf</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitungHurufPerKata() {
+      const kalimat = document.getElementById("kalimat").value.trim();
+      const hasil = document.getElementById("hasil");
+
+      if (kalimat === "") {
+        hasil.textContent = "Masukkan kalimat terlebih dahulu!";
+        return;
+      }
+
+      const kataArray = kalimat.split(/\s+/).filter(kata => kata !== "");
+      let output = "<h3>Hasil:</h3><ul>";
+
+      kataArray.forEach((kata, index) => {
+        const jumlahHuruf = kata.length;
+        output += `<li>Kata ke-${index + 1} ("${kata}") : ${jumlahHuruf} huruf</li>`;
+      });
+
+      output += "</ul>";
+      hasil.innerHTML = output;
+    }
+  </script>
+</body>
+</html>

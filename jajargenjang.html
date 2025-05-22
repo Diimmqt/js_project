@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kalkulator Jajar Genjang</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    input, button {
+      margin: 5px;
+      padding: 8px;
+      width: 220px;
+    }
+    #hasil {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Kalkulator Jajar Genjang</h2>
+
+  <input type="number" id="alas" placeholder="Alas (cm)">
+  <br>
+  <input type="number" id="tinggi" placeholder="Tinggi (cm)">
+  <br>
+  <input type="number" id="sisiMiring" placeholder="Sisi Miring (cm)">
+  <br>
+  <button onclick="hitungJajarGenjang()">Hitung</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitungJajarGenjang() {
+      const alas = parseFloat(document.getElementById("alas").value);
+      const tinggi = parseFloat(document.getElementById("tinggi").value);
+      const sisiMiring = parseFloat(document.getElementById("sisiMiring").value);
+      const hasil = document.getElementById("hasil");
+
+      if (isNaN(alas) || alas <= 0 || isNaN(tinggi) || tinggi <= 0 || isNaN(sisiMiring) || sisiMiring <= 0) {
+        hasil.textContent = "Masukkan semua nilai dengan benar!";
+        return;
+      }
+
+      const luas = alas * tinggi;
+      const keliling = 2 * (alas + sisiMiring);
+
+      hasil.innerHTML = `Luas: ${luas.toFixed(2)} cm²<br>Keliling: ${keliling.toFixed(2)} cm`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Konversi Angka ke Huruf</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 450px;
+      margin: 50px auto;
+      padding: 10px;
+      text-align: center;
+    }
+    input {
+      width: 90%;
+      padding: 8px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 8px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #hasil {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+      min-height: 40px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h2>Konversi Angka ke Huruf (Bahasa Indonesia)</h2>
+
+  <input type="number" id="angka" placeholder="Masukkan angka (max 999.999.999)" />
+  <br />
+  <button onclick="konversi()">Konversi</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function angkaKeHuruf(n) {
+      const satuan = ["", "satu", "dua", "tiga", "empat", "lima",
+                      "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas"];
+
+      n = Number(n);
+      if (n < 12) {
+        return satuan[n];
+      } else if (n < 20) {
+        return angkaKeHuruf(n - 10) + " belas";
+      } else if (n < 100) {
+        return angkaKeHuruf(Math.floor(n / 10)) + " puluh " + angkaKeHuruf(n % 10);
+      } else if (n < 200) {
+        return "seratus " + angkaKeHuruf(n - 100);
+      } else if (n < 1000) {
+        return angkaKeHuruf(Math.floor(n / 100)) + " ratus " + angkaKeHuruf(n % 100);
+      } else if (n < 2000) {
+        return "seribu " + angkaKeHuruf(n - 1000);
+      } else if (n < 1000000) {
+        return angkaKeHuruf(Math.floor(n / 1000)) + " ribu " + angkaKeHuruf(n % 1000);
+      } else if (n < 1000000000) {
+        return angkaKeHuruf(Math.floor(n / 1000000)) + " juta " + angkaKeHuruf(n % 1000000);
+      } else {
+        return "Angka terlalu besar";
+      }
+    }
+
+    function konversi() {
+      const input = document.getElementById("angka").value;
+      const hasilDiv = document.getElementById("hasil");
+      const angka = parseInt(input);
+
+      if (isNaN(angka) || angka < 0) {
+        hasilDiv.textContent = "Masukkan angka valid (positif)!";
+        return;
+      }
+
+      if (angka > 999999999) {
+        hasilDiv.textContent = "Angka terlalu besar (max 999.999.999)";
+        return;
+      }
+
+      let hasil = angkaKeHuruf(angka).trim();
+      hasilDiv.textContent = `${angka} = ${hasil}`;
+    }
+  </script>
+</body>
+</html>

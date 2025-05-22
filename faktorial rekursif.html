@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Faktorial Rekursif</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin-top: 50px;
+      text-align: center;
+    }
+    input, button {
+      margin: 5px;
+      padding: 8px;
+      width: 200px;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    #hasil {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Faktorial (Rekursif)</h2>
+  <input type="number" id="angka" placeholder="Masukkan angka" min="0" />
+  <br />
+  <button onclick="prosesFaktorial()">Hitung Faktorial</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    // Fungsi faktorial rekursif
+    function faktorial(n) {
+      if (n === 0 || n === 1) {
+        return 1;
+      } else {
+        return n * faktorial(n - 1);
+      }
+    }
+
+    function prosesFaktorial() {
+      const angka = parseInt(document.getElementById("angka").value);
+      const hasil = document.getElementById("hasil");
+
+      if (isNaN(angka) || angka < 0) {
+        alert("Masukkan angka positif atau nol!");
+        return;
+      }
+
+      const hasilFaktorial = faktorial(angka);
+      hasil.innerHTML = `Faktorial dari ${angka} adalah <strong>${hasilFaktorial}</strong>`;
+    }
+  </script>
+</body>
+</html>

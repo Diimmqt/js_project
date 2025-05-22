@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kalkulator Sederhana</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    input, select, button {
+      margin: 5px;
+      padding: 8px;
+      width: 220px;
+    }
+    #hasil {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Kalkulator Sederhana</h2>
+
+  <input type="number" id="angka1" placeholder="Angka pertama">
+  <br>
+  <input type="number" id="angka2" placeholder="Angka kedua">
+  <br>
+  <select id="operator">
+    <option value="tambah">+</option>
+    <option value="kurang">-</option>
+    <option value="kali">×</option>
+    <option value="bagi">÷</option>
+  </select>
+  <br>
+  <button onclick="hitung()">Hitung</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitung() {
+      const angka1 = parseFloat(document.getElementById("angka1").value);
+      const angka2 = parseFloat(document.getElementById("angka2").value);
+      const operator = document.getElementById("operator").value;
+      const hasil = document.getElementById("hasil");
+
+      if (isNaN(angka1) || isNaN(angka2)) {
+        hasil.textContent = "Masukkan kedua angka dengan benar!";
+        return;
+      }
+
+      let result;
+      switch (operator) {
+        case "tambah":
+          result = angka1 + angka2;
+          break;
+        case "kurang":
+          result = angka1 - angka2;
+          break;
+        case "kali":
+          result = angka1 * angka2;
+          break;
+        case "bagi":
+          if (angka2 === 0) {
+            hasil.textContent = "Pembagian dengan nol tidak diperbolehkan!";
+            return;
+          }
+          result = angka1 / angka2;
+          break;
+        default:
+          hasil.textContent = "Pilih operator!";
+          return;
+      }
+
+      hasil.textContent = `Hasil: ${result}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Konversi Menit & Jam ke Detik</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 15px;
+      text-align: center;
+    }
+    input {
+      width: 80%;
+      padding: 8px;
+      margin: 8px 0;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    #hasil {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+      color: #222;
+      min-height: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Konversi Menit & Jam ke Detik</h2>
+
+  <input type="number" id="inputMenit" placeholder="Masukkan menit" min="0" />
+  <br />
+  <input type="number" id="inputJam" placeholder="Masukkan jam" min="0" />
+  <br />
+  <button onclick="konversi()">Hitung Detik</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function konversi() {
+      const menit = parseInt(document.getElementById('inputMenit').value) || 0;
+      const jam = parseInt(document.getElementById('inputJam').value) || 0;
+      const hasilDiv = document.getElementById('hasil');
+
+      if (menit < 0 || jam < 0) {
+        hasilDiv.textContent = "Masukkan nilai positif atau kosong!";
+        return;
+      }
+
+      const detikDariMenit = menit * 60;
+      const detikDariJam = jam * 3600;
+      const totalDetik = detikDariMenit + detikDariJam;
+
+      hasilDiv.textContent = 
+        `${menit} menit = ${detikDariMenit} detik\n` +
+        `${jam} jam = ${detikDariJam} detik\n` +
+        `Total detik = ${totalDetik} detik`;
+    }
+  </script>
+</body>
+</html>
+

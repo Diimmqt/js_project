@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hitung Kata</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    textarea, button {
+      margin: 5px;
+      padding: 8px;
+      width: 300px;
+    }
+    #hasil {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Hitung Jumlah Kata</h2>
+  <textarea id="kalimat" rows="5" placeholder="Masukkan kalimat di sini..."></textarea>
+  <br>
+  <button onclick="hitungKata()">Hitung Kata</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitungKata() {
+      const kalimat = document.getElementById("kalimat").value.trim();
+      const hasil = document.getElementById("hasil");
+
+      if (kalimat === "") {
+        hasil.textContent = "Masukkan kalimat terlebih dahulu!";
+        return;
+      }
+
+      // Pisahkan kata berdasarkan spasi, lalu filter kata kosong
+      const kataArray = kalimat.split(/\s+/).filter(kata => kata !== "");
+      const jumlahKata = kataArray.length;
+
+      hasil.textContent = `Jumlah kata: ${jumlahKata}`;
+    }
+  </script>
+</body>
+</html>
