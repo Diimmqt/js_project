@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sapaan Nama</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input, button { padding: 8px; margin: 10px; font-size: 16px; }
+    #hasil { margin-top: 20px; font-size: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Masukkan Nama Anda</h2>
+
+  <input type="text" id="inputNama" placeholder="Nama Anda">
+  <br>
+  <button onclick="sapa()">Kirim</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function sapa() {
+      const nama = document.getElementById("inputNama").value;
+      const hasilDiv = document.getElementById("hasil");
+
+      if (nama.trim() === "") {
+        hasilDiv.textContent = "Silakan masukkan nama!";
+      } else {
+        hasilDiv.textContent = `Halo, ${nama}!`;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Konversi Langkah ke Meter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      text-align: center;
+    }
+    input {
+      width: 80%;
+      padding: 8px;
+      margin: 8px 0;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    #hasil {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+      color: #333;
+      min-height: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Konversi Langkah Kaki ke Meter</h2>
+
+  <input type="number" id="inputLangkah" placeholder="Jumlah langkah" min="0" />
+  <br />
+  <input type="number" id="panjangLangkah" placeholder="Panjang 1 langkah (meter)" min="0" step="0.01" value="0.75" />
+  <br />
+  <button onclick="konversi()">Hitung Meter</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function konversi() {
+      const jumlahLangkah = parseFloat(document.getElementById("inputLangkah").value);
+      const panjangLangkah = parseFloat(document.getElementById("panjangLangkah").value);
+      const hasilDiv = document.getElementById("hasil");
+
+      if (isNaN(jumlahLangkah) || isNaN(panjangLangkah) || jumlahLangkah < 0 || panjangLangkah <= 0) {
+        hasilDiv.textContent = "Masukkan angka langkah dan panjang langkah yang valid!";
+        return;
+      }
+
+      const hasilMeter = jumlahLangkah * panjangLangkah;
+
+      hasilDiv.textContent = `${jumlahLangkah} langkah × ${panjangLangkah} m = ${hasilMeter.toFixed(2)} meter`;
+    }
+  </script>
+</body>
+</html>

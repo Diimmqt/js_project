@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lirik Berjalan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    #output {
+      font-size: 20px;
+      white-space: pre-line;
+      margin-top: 20px;
+      min-height: 150px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>I Don't Love You - My Chemical Romance</h2>
+  <button onclick="jalaninLirik()">Putar Lirik</button>
+  <div id="output"></div>
+
+  <script>
+    const lirik = [
+      { teks: "When you go", delayPerKarakter: 300, delaySetelahBaris: 600 },
+      { teks: "and would you even turn to stay", delayPerKarakter: 120, delaySetelahBaris: 600 },
+      { teks: "I don't love you", delayPerKarakter: 80, delaySetelahBaris: 800 },
+      { teks: "like I did yesterday", delayPerKarakter: 100, delaySetelahBaris: 600 }
+    ];
+
+    async function jalaninLirik() {
+      const outputDiv = document.getElementById("output");
+      outputDiv.textContent = ""; // bersihkan dulu
+
+      await delay(2000); // delay awal 2 detik
+
+      for (let i = 0; i < lirik.length; i++) {
+        const baris = lirik[i];
+        for (let j = 0; j < baris.teks.length; j++) {
+          outputDiv.textContent += baris.teks[j];
+          await delay(baris.delayPerKarakter);
+        }
+        outputDiv.textContent += '\n';
+        await delay(baris.delaySetelahBaris);
+      }
+    }
+
+    function delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+  </script>
+</body>
+</html>

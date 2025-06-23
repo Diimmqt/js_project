@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kalkulator Hukum Ohm</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 40px; }
+    input, button { padding: 8px; margin: 10px; font-size: 16px; width: 80%; }
+    #hasil { margin-top: 20px; font-size: 18px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Kalkulator Hukum Ohm</h2>
+
+  <input type="number" id="tegangan" placeholder="Tegangan (Volt)">
+  <br>
+  <input type="number" id="arus" placeholder="Arus (Ampere)">
+  <br>
+  <input type="number" id="hambatan" placeholder="Hambatan (Ohm)">
+  <br>
+  <button onclick="hitungOhm()">Hitung</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitungOhm() {
+      const V = parseFloat(document.getElementById("tegangan").value);
+      const I = parseFloat(document.getElementById("arus").value);
+      const R = parseFloat(document.getElementById("hambatan").value);
+      const hasilDiv = document.getElementById("hasil");
+
+      // Validasi minimal 2 input harus terisi
+      const values = [V, I, R].filter(val => !isNaN(val));
+      if (values.length < 2) {
+        hasilDiv.textContent = "Isi minimal 2 nilai untuk menghitung yang ketiga!";
+        return;
+      }
+
+      // Hitung berdasarkan yang kosong
+      if (isNaN(V)) {
+        hasilDiv.textContent = `Tegangan (V) = ${I * R} Volt`;
+      } else if (isNaN(I)) {
+        hasilDiv.textContent = `Arus (I) = ${(V / R).toFixed(2)} Ampere`;
+      } else if (isNaN(R)) {
+        hasilDiv.textContent = `Hambatan (R) = ${(V / I).toFixed(2)} Ohm`;
+      } else {
+        hasilDiv.textContent = "Semua nilai sudah terisi!";
+      }
+    }
+  </script>
+</body>
+</html>

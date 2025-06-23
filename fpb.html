@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FPB Dua Bilangan</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 400px; margin: 50px auto; text-align: center; }
+    input, button { margin: 8px; padding: 8px; font-size: 16px; width: 80%; }
+    #hasil { margin-top: 20px; font-weight: bold; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <h2>FPB Dua Bilangan</h2>
+
+  <input type="number" id="angka1" placeholder="Bilangan pertama" min="1">
+  <br>
+  <input type="number" id="angka2" placeholder="Bilangan kedua" min="1">
+  <br>
+  <button onclick="hitungFPB()">Hitung FPB</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function fpb(a, b) {
+      while (b !== 0) {
+        let t = b;
+        b = a % b;
+        a = t;
+      }
+      return a;
+    }
+
+    function hitungFPB() {
+      const a = parseInt(document.getElementById("angka1").value);
+      const b = parseInt(document.getElementById("angka2").value);
+      const hasilDiv = document.getElementById("hasil");
+
+      if (isNaN(a) || isNaN(b) || a <= 0 || b <= 0) {
+        hasilDiv.textContent = "Masukkan bilangan positif!";
+        return;
+      }
+
+      const hasilFPB = fpb(a, b);
+      hasilDiv.textContent = `FPB dari ${a} dan ${b} = ${hasilFPB}`;
+    }
+  </script>
+</body>
+</html>
