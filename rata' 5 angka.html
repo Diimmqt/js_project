@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hitung Rata-rata 5 Angka</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input, button { padding: 6px; margin: 5px; font-size: 14px; }
+    #hasil { margin-top: 20px; font-size: 18px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Hitung Rata-rata 5 Angka</h2>
+
+  <input type="number" id="angka1" placeholder="Angka 1">
+  <input type="number" id="angka2" placeholder="Angka 2">
+  <input type="number" id="angka3" placeholder="Angka 3">
+  <input type="number" id="angka4" placeholder="Angka 4">
+  <input type="number" id="angka5" placeholder="Angka 5">
+  <br>
+  <button onclick="hitungRata()">Hitung Rata-rata</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitungRata() {
+      const a1 = parseFloat(document.getElementById("angka1").value);
+      const a2 = parseFloat(document.getElementById("angka2").value);
+      const a3 = parseFloat(document.getElementById("angka3").value);
+      const a4 = parseFloat(document.getElementById("angka4").value);
+      const a5 = parseFloat(document.getElementById("angka5").value);
+
+      if (isNaN(a1) || isNaN(a2) || isNaN(a3) || isNaN(a4) || isNaN(a5)) {
+        document.getElementById("hasil").textContent = "Masukkan semua angka!";
+        return;
+      }
+
+      const rata = (a1 + a2 + a3 + a4 + a5) / 5;
+      document.getElementById("hasil").textContent = `Rata-rata: ${rata.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>

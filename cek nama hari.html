@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cek Nama Hari</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input, button { padding: 8px; margin: 10px; font-size: 16px; }
+    #hasil { font-size: 22px; margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Cek Nama Hari dari Tanggal</h2>
+
+  <input type="date" id="tanggal">
+  <br>
+  <button onclick="cekHari()">Cek Hari</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function cekHari() {
+      const tgl = document.getElementById("tanggal").value;
+      const hasilDiv = document.getElementById("hasil");
+
+      if (!tgl) {
+        hasilDiv.textContent = "Pilih tanggal dulu!";
+        return;
+      }
+
+      const hari = new Date(tgl).getDay();
+      const namaHari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+
+      hasilDiv.textContent = `Hari: ${namaHari[hari]}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Konversi Byte ke KB, MB, GB</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input, button { padding: 6px; margin: 5px; font-size: 14px; }
+    #hasil { margin-top: 20px; font-size: 18px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Konversi Byte ke KB, MB, GB</h2>
+
+  <input type="number" id="byte" placeholder="Masukkan jumlah byte">
+  <br>
+  <button onclick="konversi()">Konversi</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function konversi() {
+      const byte = parseFloat(document.getElementById("byte").value);
+      const hasilDiv = document.getElementById("hasil");
+
+      if (isNaN(byte) || byte < 0) {
+        hasilDiv.textContent = "Masukkan jumlah byte yang valid!";
+        return;
+      }
+
+      const kb = byte / 1024;
+      const mb = kb / 1024;
+      const gb = mb / 1024;
+
+      hasilDiv.innerHTML = `
+        ${byte.toLocaleString()} Byte =<br>
+        ${kb.toFixed(2)} KB<br>
+        ${mb.toFixed(2)} MB<br>
+        ${gb.toFixed(2)} GB
+      `;
+    }
+  </script>
+</body>
+</html>

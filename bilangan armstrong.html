@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cek Bilangan Armstrong</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input, button { padding: 8px; margin: 10px; font-size: 16px; }
+    #hasil { margin-top: 20px; font-size: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Cek Bilangan Armstrong</h2>
+
+  <input type="number" id="angka" placeholder="Masukkan angka">
+  <br>
+  <button onclick="cekArmstrong()">Cek Armstrong</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function cekArmstrong() {
+      const angka = document.getElementById("angka").value;
+      const hasilDiv = document.getElementById("hasil");
+
+      if (angka === "") {
+        hasilDiv.textContent = "Masukkan angka terlebih dahulu!";
+        return;
+      }
+
+      const n = angka.length;
+      let total = 0;
+
+      for (let i = 0; i < n; i++) {
+        total += Math.pow(parseInt(angka[i]), n);
+      }
+
+      hasilDiv.textContent = (total == angka)
+        ? `${angka} adalah bilangan Armstrong.`
+        : `${angka} bukan bilangan Armstrong.`;
+    }
+  </script>
+</body>
+</html>

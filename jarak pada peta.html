@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Menghitung Jarak Pada Peta</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input, button { padding: 8px; margin: 10px; font-size: 16px; }
+    #hasil { margin-top: 20px; font-size: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Menghitung Jarak Sebenarnya dari Peta</h2>
+
+  <input type="number" id="jarakPeta" placeholder="Jarak di peta (cm)">
+  <br>
+  <input type="number" id="skala" placeholder="Skala (misal 100000)">
+  <br>
+  <button onclick="hitungJarak()">Hitung Jarak Sebenarnya</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitungJarak() {
+      const jarakPeta = parseFloat(document.getElementById("jarakPeta").value);
+      const skala = parseFloat(document.getElementById("skala").value);
+      const hasilDiv = document.getElementById("hasil");
+
+      if (isNaN(jarakPeta) || isNaN(skala) || jarakPeta <= 0 || skala <= 0) {
+        hasilDiv.textContent = "Masukkan angka yang valid!";
+        return;
+      }
+
+      const jarakCm = jarakPeta * skala;
+      const jarakKm = jarakCm / 100000;
+
+      hasilDiv.innerHTML = `Jarak sebenarnya adalah ${jarakKm.toFixed(2)} km (atau ${jarakCm.toLocaleString()} cm)`;
+    }
+  </script>
+</body>
+</html>
+  

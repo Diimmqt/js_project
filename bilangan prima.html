@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cek Bilangan Prima</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input, button { padding: 8px; margin: 10px; font-size: 16px; }
+    #hasil { margin-top: 20px; font-size: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Cek Bilangan Prima</h2>
+
+  <input type="number" id="angka" placeholder="Masukkan angka">
+  <br>
+  <button onclick="cekPrima()">Cek Prima</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function cekPrima() {
+      const angka = parseInt(document.getElementById("angka").value);
+      const hasilDiv = document.getElementById("hasil");
+
+      if (isNaN(angka) || angka < 2) {
+        hasilDiv.textContent = "Masukkan angka ≥ 2!";
+        return;
+      }
+
+      let prima = true;
+      for (let i = 2; i <= Math.sqrt(angka); i++) {
+        if (angka % i === 0) {
+          prima = false;
+          break;
+        }
+      }
+
+      hasilDiv.textContent = prima ? `${angka} adalah bilangan prima.` : `${angka} bukan bilangan prima.`;
+    }
+  </script>
+</body>
+</html>

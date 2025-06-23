@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Konversi Centimeter ke Meter</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input, button { padding: 8px; margin: 10px; font-size: 16px; }
+    #hasil { margin-top: 20px; font-size: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Konversi Centimeter ke Meter</h2>
+
+  <input type="number" id="cm" placeholder="Masukkan jumlah Centimeter">
+  <br>
+  <button onclick="konversiM()">Konversi</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function konversiM() {
+      const cm = parseFloat(document.getElementById("cm").value);
+      const hasilDiv = document.getElementById("hasil");
+
+      if (isNaN(cm)) {
+        hasilDiv.textContent = "Masukkan jumlah centimeter dulu!";
+        return;
+      }
+
+      const meter = cm / 100;
+      hasilDiv.textContent = `${cm.toLocaleString()} cm = ${meter.toFixed(2)} meter.`;
+    }
+  </script>
+</body>
+</html>

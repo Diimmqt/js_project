@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Timer Mundur</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input, button { padding: 8px; margin: 10px; font-size: 16px; }
+    #waktu { font-size: 50px; margin: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Timer Mundur</h2>
+
+  <input type="number" id="detik" placeholder="Masukkan detik">
+  <br>
+  <button onclick="mulaiTimer()">Mulai Timer</button>
+
+  <div id="waktu"></div>
+
+  <script>
+    let interval;
+
+    function mulaiTimer() {
+      let waktu = parseInt(document.getElementById("detik").value);
+      const waktuDiv = document.getElementById("waktu");
+
+      if (isNaN(waktu) || waktu <= 0) {
+        waktuDiv.textContent = "Masukkan jumlah detik yang valid!";
+        return;
+      }
+
+      clearInterval(interval);
+
+      interval = setInterval(() => {
+        waktuDiv.textContent = waktu;
+        waktu--;
+
+        if (waktu < 0) {
+          clearInterval(interval);
+          waktuDiv.textContent = "Waktu habis!";
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

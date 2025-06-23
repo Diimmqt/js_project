@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stopwatch Sederhana</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    button { padding: 8px; margin: 5px; font-size: 16px; }
+    #waktu { font-size: 50px; margin: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Stopwatch Sederhana</h2>
+
+  <div id="waktu">0</div>
+
+  <button onclick="mulai()">Mulai</button>
+  <button onclick="pause()">Pause</button>
+  <button onclick="reset()">Reset</button>
+
+  <script>
+    let waktu = 0;
+    let interval;
+
+    function mulai() {
+      clearInterval(interval);
+      interval = setInterval(() => {
+        waktu++;
+        document.getElementById("waktu").textContent = waktu;
+      }, 1000);
+    }
+
+    function pause() {
+      clearInterval(interval);
+    }
+
+    function reset() {
+      clearInterval(interval);
+      waktu = 0;
+      document.getElementById("waktu").textContent = waktu;
+    }
+  </script>
+</body>
+</html>

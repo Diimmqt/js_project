@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kalkulator Kurs Mata Uang</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input, select, button { padding: 8px; margin: 10px; font-size: 16px; }
+    #hasil { margin-top: 20px; font-size: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Kalkulator Kurs Mata Uang</h2>
+
+  <input type="number" id="rupiah" placeholder="Masukkan jumlah Rupiah">
+  <br>
+  <select id="mataUang">
+    <option value="16000">Dollar (USD)</option>
+    <option value="17500">Euro (EUR)</option>
+    <option value="105">Yen (JPY)</option>
+  </select>
+  <br>
+  <button onclick="konversi()">Konversi</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function konversi() {
+      const rupiah = parseFloat(document.getElementById("rupiah").value);
+      const kurs = parseFloat(document.getElementById("mataUang").value);
+      const hasilDiv = document.getElementById("hasil");
+
+      if (isNaN(rupiah)) {
+        hasilDiv.textContent = "Masukkan jumlah rupiah dulu!";
+        return;
+      }
+
+      const hasil = rupiah / kurs;
+      hasilDiv.textContent = `Rp ${rupiah.toLocaleString()} = ${hasil.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>

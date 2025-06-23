@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Program Tebak Angka</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input, button { padding: 6px; margin: 5px; font-size: 14px; }
+    #hasil { margin-top: 20px; font-size: 18px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Program Tebak Angka (1 - 10)</h2>
+
+  <input type="number" id="tebakan" placeholder="Masukkan tebakan (1-10)">
+  <br>
+  <button onclick="tebakAngka()">Tebak!</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const angkaRahasia = Math.floor(Math.random() * 10) + 1;
+
+    function tebakAngka() {
+      const tebakan = parseInt(document.getElementById("tebakan").value);
+      const hasilDiv = document.getElementById("hasil");
+
+      if (isNaN(tebakan) || tebakan < 1 || tebakan > 10) {
+        hasilDiv.textContent = "Masukkan angka 1-10!";
+        return;
+      }
+
+      if (tebakan === angkaRahasia) {
+        hasilDiv.textContent = `Benar! Angkanya memang ${angkaRahasia}`;
+      } else {
+        hasilDiv.textContent = tebakan < angkaRahasia
+          ? "Terlalu kecil!"
+          : "Terlalu besar!";
+      }
+    }
+  </script>
+</body>
+</html>

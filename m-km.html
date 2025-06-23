@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Konversi Meter ke Kilometer</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input, button { padding: 8px; margin: 10px; font-size: 16px; }
+    #hasil { margin-top: 20px; font-size: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Konversi Meter ke Kilometer</h2>
+
+  <input type="number" id="meter" placeholder="Masukkan jumlah Meter">
+  <br>
+  <button onclick="konversiKM()">Konversi</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function konversiKM() {
+      const meter = parseFloat(document.getElementById("meter").value);
+      const hasilDiv = document.getElementById("hasil");
+
+      if (isNaN(meter)) {
+        hasilDiv.textContent = "Masukkan jumlah meter dulu!";
+        return;
+      }
+
+      const km = meter / 1000;
+      hasilDiv.textContent = `${meter.toLocaleString()} meter = ${km.toFixed(3)} kilometer.`;
+    }
+  </script>
+</body>
+</html>

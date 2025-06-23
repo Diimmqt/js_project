@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cek Tahun Kabisat</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input, button { padding: 6px; margin: 5px; font-size: 14px; }
+    #hasil { margin-top: 20px; font-size: 18px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Cek Tahun Kabisat</h2>
+
+  <input type="number" id="tahun" placeholder="Masukkan tahun">
+  <br>
+  <button onclick="cekKabisat()">Cek</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function cekKabisat() {
+      const tahun = parseInt(document.getElementById("tahun").value);
+      const hasilDiv = document.getElementById("hasil");
+
+      if (isNaN(tahun) || tahun <= 0) {
+        hasilDiv.textContent = "Masukkan tahun yang valid!";
+        return;
+      }
+
+      if ((tahun % 4 === 0 && tahun % 100 !== 0) || (tahun % 400 === 0)) {
+        hasilDiv.textContent = `${tahun} adalah tahun kabisat.`;
+      } else {
+        hasilDiv.textContent = `${tahun} bukan tahun kabisat.`;
+      }
+    }
+  </script>
+</body>
+</html>
