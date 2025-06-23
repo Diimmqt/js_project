@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kalkulator Trapesium</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 40px; }
+    input, button { padding: 8px; margin: 10px; font-size: 16px; }
+    #hasil { margin-top: 20px; font-size: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Kalkulator Luas Trapesium</h2>
+
+  <input type="number" id="a" placeholder="Sisi Atas (a)">
+  <br>
+  <input type="number" id="b" placeholder="Sisi Bawah (b)">
+  <br>
+  <input type="number" id="t" placeholder="Tinggi (t)">
+  <br>
+  <button onclick="hitungTrapesium()">Hitung Luas</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitungTrapesium() {
+      const a = parseFloat(document.getElementById("a").value);
+      const b = parseFloat(document.getElementById("b").value);
+      const t = parseFloat(document.getElementById("t").value);
+      const hasilDiv = document.getElementById("hasil");
+
+      if (isNaN(a) || isNaN(b) || isNaN(t)) {
+        hasilDiv.textContent = "Masukkan semua nilai sisi dan tinggi!";
+        return;
+      }
+
+      const luas = 0.5 * (a + b) * t;
+      hasilDiv.textContent = `Luas trapesium = ${luas} cm²`;
+    }
+  </script>
+</body>
+</html>

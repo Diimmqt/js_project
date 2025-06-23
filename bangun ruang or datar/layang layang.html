@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Layang-Layang</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        input, button {
+            margin: 5px;
+            padding: 5px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <center class="container">
+        <h2>Kalkulator Layang-Layang</h2>
+        <form action="">
+            <label for="d1">Diagonal 1 (cm): </label>
+            <input type="number" id="d1"><br>
+
+            <label for="d2">Diagonal 2 (cm): </label>
+            <input type="number" id="d2"><br>
+
+            <label for="sisiA">Sisi A (cm): </label>
+            <input type="number" id="sisiA"><br>
+
+            <label for="sisiB">Sisi B (cm): </label>
+            <input type="number" id="sisiB"><br>
+
+            <button type="button" id="hitung">Hitung</button>
+        </form>
+
+        <h3>Hasil</h3>
+        <p>Luas: <span id="luas"></span></p>
+        <p>Keliling: <span id="keliling"></span></p>
+    </center>
+
+    <script>
+        const tombol = document.getElementById("hitung");
+
+        tombol.addEventListener("click", function() {
+            const d1 = parseFloat(document.getElementById("d1").value);
+            const d2 = parseFloat(document.getElementById("d2").value);
+            const sisiA = parseFloat(document.getElementById("sisiA").value);
+            const sisiB = parseFloat(document.getElementById("sisiB").value);
+            const tampilLuas = document.getElementById("luas");
+            const tampilKeliling = document.getElementById("keliling");
+
+            if (isNaN(d1) || isNaN(d2) || isNaN(sisiA) || isNaN(sisiB)) {
+                alert("Masukkan semua nilai dengan benar!");
+                return;
+            }
+
+            let luas = 0.5 * d1 * d2;
+            let keliling = 2 * (sisiA + sisiB);
+
+            tampilLuas.innerHTML = luas.toFixed(2) + " cm²";
+            tampilKeliling.innerHTML = keliling.toFixed(2) + " cm";
+        });
+    </script>
+</body>
+</html>

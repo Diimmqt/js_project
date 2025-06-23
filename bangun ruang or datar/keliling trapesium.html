@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Keliling Trapesium</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 40px; }
+    input, button { padding: 8px; margin: 10px; font-size: 16px; }
+    #hasil { margin-top: 20px; font-size: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Kalkulator Keliling Trapesium</h2>
+
+  <input type="number" id="a" placeholder="Sisi Atas (a)">
+  <br>
+  <input type="number" id="b" placeholder="Sisi Bawah (b)">
+  <br>
+  <input type="number" id="c" placeholder="Sisi Kiri (c)">
+  <br>
+  <input type="number" id="d" placeholder="Sisi Kanan (d)">
+  <br>
+  <button onclick="hitungKeliling()">Hitung Keliling</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitungKeliling() {
+      const a = parseFloat(document.getElementById("a").value);
+      const b = parseFloat(document.getElementById("b").value);
+      const c = parseFloat(document.getElementById("c").value);
+      const d = parseFloat(document.getElementById("d").value);
+      const hasilDiv = document.getElementById("hasil");
+
+      if (isNaN(a) || isNaN(b) || isNaN(c) || isNaN(d)) {
+        hasilDiv.textContent = "Lengkapi semua nilai sisi!";
+        return;
+      }
+
+      const keliling = a + b + c + d;
+      hasilDiv.textContent = `Keliling trapesium = ${keliling} cm`;
+    }
+  </script>
+</body>
+</html>

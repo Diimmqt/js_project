@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kalkulator Prisma Segi Empat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 40px;
+        }
+        input, button {
+            margin: 6px;
+            padding: 5px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <center class="container">
+        <h2>Kalkulator Prisma Segi Empat</h2>
+        <form action="">
+            <label for="panjang">Panjang alas (cm): </label>
+            <input type="number" id="panjang" /><br />
+            <label for="lebar">Lebar alas (cm): </label>
+            <input type="number" id="lebar" /><br />
+            <label for="tinggiPrisma">Tinggi prisma (cm): </label>
+            <input type="number" id="tinggiPrisma" /><br />
+            <button type="button" id="hitung">Hitung</button>
+        </form>
+
+        <h3>Hasil</h3>
+        <p>Volume: <span id="volume"></span></p>
+        <p>Luas Permukaan: <span id="luas"></span></p>
+    </center>
+
+    <script>
+        const hitung = document.getElementById("hitung");
+
+        hitung.addEventListener("click", function() {
+            const panjang = parseFloat(document.getElementById("panjang").value);
+            const lebar = parseFloat(document.getElementById("lebar").value);
+            const tinggiPrisma = parseFloat(document.getElementById("tinggiPrisma").value);
+
+            const tampilVolume = document.getElementById("volume");
+            const tampilLuas = document.getElementById("luas");
+
+            if (
+                isNaN(panjang) ||
+                isNaN(lebar) ||
+                isNaN(tinggiPrisma) ||
+                panjang <= 0 ||
+                lebar <= 0 ||
+                tinggiPrisma <= 0
+            ) {
+                alert("Masukkan semua nilai dengan benar!");
+                return;
+            }
+
+            let luasAlas = panjang * lebar;
+            let kelilingAlas = 2 * (panjang + lebar);
+            let volume = luasAlas * tinggiPrisma;
+            let luasPermukaan = 2 * luasAlas + kelilingAlas * tinggiPrisma;
+
+            tampilVolume.innerHTML = volume.toFixed(2) + " cm<sup>3</sup>";
+            tampilLuas.innerHTML = luasPermukaan.toFixed(2) + " cm<sup>2</sup>";
+        });
+    </script>
+</body>
+</html>
