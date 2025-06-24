@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Validasi Nomor HP</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 40px; }
+    input, button { padding: 8px; margin: 10px; font-size: 16px; }
+    #hasil { margin-top: 20px; font-size: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Validasi Nomor HP Indonesia</h2>
+
+  <input type="text" id="hp" placeholder="Masukkan nomor HP">
+  <br>
+  <button onclick="cekHP()">Cek</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function cekHP() {
+      const hp = document.getElementById("hp").value.trim();
+      const hasilDiv = document.getElementById("hasil");
+
+      const regex = /^(08|62)\d{8,}$/;
+
+      if (regex.test(hp)) {
+        hasilDiv.textContent = "✅ Nomor HP valid";
+      } else {
+        hasilDiv.textContent = "❌ Nomor HP tidak valid";
+      }
+    }
+  </script>
+</body>
+</html>

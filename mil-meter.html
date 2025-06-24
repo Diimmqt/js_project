@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Konversi Mil ke Meter</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input, button { padding: 10px; font-size: 16px; margin: 10px; }
+    #hasil { margin-top: 20px; font-size: 22px; font-weight: bold; color: #4CAF50; }
+  </style>
+</head>
+<body>
+  <h2>Konversi Mil ke Meter</h2>
+
+  <input type="number" id="mil" placeholder="Masukkan jarak (mil)">
+  <br>
+  <button onclick="konversi()">Konversi</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function konversi() {
+      const mil = parseFloat(document.getElementById("mil").value);
+      const hasilDiv = document.getElementById("hasil");
+
+      if (isNaN(mil) || mil < 0) {
+        hasilDiv.textContent = "Masukkan jarak yang valid!";
+        return;
+      }
+
+      const meter = mil * 1609.34;
+      hasilDiv.textContent = `${mil} mil = ${meter.toLocaleString()} meter`;
+    }
+  </script>
+</body>
+</html>

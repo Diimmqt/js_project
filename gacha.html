@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simulasi Gacha Dengan Persentase</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    button { padding: 8px 20px; font-size: 18px; margin: 20px; }
+    #hasil { font-size: 26px; font-weight: bold; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h2>🎲 Simulasi Gacha Item 🎲</h2>
+
+  <button onclick="gacha()">Gacha Sekarang!</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function gacha() {
+      const items = [
+        { nama: "⭐ Common Item", peluang: 40 },
+        { nama: "🍀 Rare Item", peluang: 30 },
+        { nama: "💎 Epic Item", peluang: 12 },
+        { nama: "🔮 Legendary Item", peluang: 7 },
+        { nama: "🔥 Mythic Item", peluang: 1 }
+      ];
+
+      // Hitung total peluang
+      const total = items.reduce((acc, item) => acc + item.peluang, 0);
+
+      // Generate angka acak dari 0 sampai total peluang
+      let random = Math.random() * total;
+      let hasilItem = "";
+
+      for (let i = 0; i < items.length; i++) {
+        if (random < items[i].peluang) {
+          hasilItem = items[i].nama;
+          break;
+        }
+        random -= items[i].peluang;
+      }
+
+      document.getElementById("hasil").textContent = hasilItem;
+    }
+  </script>
+</body>
+</html>

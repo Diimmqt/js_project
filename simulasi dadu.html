@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simulasi Lempar Dadu</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    button { padding: 12px 25px; font-size: 18px; margin-top: 20px; }
+    #hasil { margin-top: 30px; font-size: 50px; font-weight: bold; color: #FF5722; }
+  </style>
+</head>
+<body>
+  <h2>Simulasi Lempar Dadu 🎲</h2>
+
+  <button onclick="lemparDadu()">Lempar!</button>
+
+  <div id="hasil">-</div>
+
+  <script>
+    function lemparDadu() {
+      const angka = Math.floor(Math.random() * 6) + 1;
+      document.getElementById("hasil").textContent = angka;
+    }
+  </script>
+</body>
+</html>

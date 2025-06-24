@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Akar Pangkat x</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input, button { padding: 8px; margin: 10px; font-size: 16px; }
+    #hasil { margin-top: 20px; font-size: 22px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Hitung Akar Pangkat x</h2>
+
+  <input type="number" id="angka" placeholder="Angka">
+  <input type="number" id="pangkat" placeholder="Pangkat akar (misal 2 untuk kuadrat, 3 untuk kubik)">
+  <br>
+  <button onclick="hitungAkar()">Hitung</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitungAkar() {
+      const angka = parseFloat(document.getElementById("angka").value);
+      const pangkat = parseFloat(document.getElementById("pangkat").value);
+      const hasilDiv = document.getElementById("hasil");
+
+      if (isNaN(angka) || isNaN(pangkat) || pangkat === 0) {
+        hasilDiv.textContent = "Masukkan angka dan pangkat yang valid!";
+        return;
+      }
+
+      const hasil = Math.pow(angka, 1 / pangkat);
+      hasilDiv.textContent = `Akar pangkat ${pangkat} dari ${angka} adalah ${hasil.toFixed(4)}`;
+    }
+  </script>
+</body>
+</html>

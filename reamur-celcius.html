@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Konversi Reamur ke Celcius</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input, button { padding: 8px; margin: 10px; font-size: 16px; }
+    #hasil { margin-top: 20px; font-size: 22px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Konversi Reamur ke Celcius</h2>
+
+  <input type="number" id="reamur" placeholder="Masukkan suhu (°Re)">
+  <br>
+  <button onclick="konversi()">Konversi</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function konversi() {
+      const reamur = parseFloat(document.getElementById("reamur").value);
+      const hasilDiv = document.getElementById("hasil");
+
+      if (isNaN(reamur)) {
+        hasilDiv.textContent = "Masukkan nilai suhu yang valid!";
+        return;
+      }
+
+      const celcius = reamur * 5 / 4;
+      hasilDiv.textContent = `${reamur}°Re = ${celcius.toFixed(2)}°C`;
+    }
+  </script>
+</body>
+</html>

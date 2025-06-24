@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Konversi Kg ke Ton</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input, button { padding: 8px; margin: 10px; font-size: 16px; }
+    #hasil { margin-top: 20px; font-size: 22px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Konversi Kg ke Ton</h2>
+
+  <input type="number" id="kg" placeholder="Masukkan berat (kg)">
+  <br>
+  <button onclick="konversi()">Konversi</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function konversi() {
+      const kg = parseFloat(document.getElementById("kg").value);
+      const hasilDiv = document.getElementById("hasil");
+
+      if (isNaN(kg) || kg < 0) {
+        hasilDiv.textContent = "Masukkan berat yang valid!";
+        return;
+      }
+
+      const ton = kg / 1000;
+      hasilDiv.textContent = `${kg} kg = ${ton} ton`;
+    }
+  </script>
+</body>
+</html>

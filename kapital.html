@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hitung Huruf Kapital</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 40px; }
+    textarea, button { padding: 8px; margin: 10px; font-size: 16px; }
+    #hasil { margin-top: 20px; font-size: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Hitung Huruf Kapital</h2>
+
+  <textarea id="kalimat" rows="4" cols="30" placeholder="Masukkan kalimat..."></textarea>
+  <br>
+  <button onclick="hitungKapital()">Hitung</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitungKapital() {
+      const kalimat = document.getElementById("kalimat").value;
+      const hasilDiv = document.getElementById("hasil");
+
+      if (kalimat.trim() === "") {
+        hasilDiv.textContent = "Masukkan kalimat dulu!";
+        return;
+      }
+
+      const jumlahKapital = kalimat.match(/[A-Z]/g);
+      const total = jumlahKapital ? jumlahKapital.length : 0;
+
+      hasilDiv.textContent = `Jumlah huruf kapital: ${total}`;
+    }
+  </script>
+</body>
+</html>

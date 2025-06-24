@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sorting Nama</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    textarea, button { padding: 8px; margin: 10px; font-size: 16px; }
+    #hasil { margin-top: 20px; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <h2>Sorting Nama (A-Z)</h2>
+
+  <textarea id="nama" rows="5" cols="30" placeholder="Masukkan nama, pisahkan dengan koma"></textarea>
+  <br>
+  <button onclick="urutkan()">Urutkan</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function urutkan() {
+      const namaInput = document.getElementById("nama").value;
+      const hasilDiv = document.getElementById("hasil");
+
+      if (namaInput.trim() === "") {
+        hasilDiv.textContent = "Masukkan daftar nama terlebih dahulu!";
+        return;
+      }
+
+      const namaArray = namaInput.split(",").map(nama => nama.trim());
+      namaArray.sort();
+
+      hasilDiv.innerHTML = "Hasil urutan:<br>" + namaArray.join("<br>");
+    }
+  </script>
+</body>
+</html>

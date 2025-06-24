@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cek Palindrome</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 40px; }
+    input, button { padding: 8px; margin: 10px; font-size: 16px; }
+    #hasil { margin-top: 20px; font-size: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Cek Kata Palindrome</h2>
+
+  <input type="text" id="kata" placeholder="Masukkan kata">
+  <br>
+  <button onclick="cekPalindrome()">Cek</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function cekPalindrome() {
+      const kata = document.getElementById("kata").value.toLowerCase().replace(/\s+/g, '');
+      const hasilDiv = document.getElementById("hasil");
+
+      if (kata === "") {
+        hasilDiv.textContent = "Masukkan kata dulu!";
+        return;
+      }
+
+      const balik = kata.split('').reverse().join('');
+      const hasil = (kata === balik) ? "adalah Palindrome" : "bukan Palindrome";
+
+      hasilDiv.textContent = `Kata "${kata}" ${hasil}.`;
+    }
+  </script>
+</body>
+</html>

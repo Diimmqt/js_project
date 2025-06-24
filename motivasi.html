@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Random Motivasi Harian</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    button { padding: 10px 20px; font-size: 16px; margin-top: 20px; }
+    #hasil { margin-top: 30px; font-size: 22px; font-weight: bold; color: #007BFF; }
+  </style>
+</head>
+<body>
+  <h2>Random Motivasi Harian</h2>
+
+  <button onclick="tampilkanMotivasi()">🎲 Ambil Motivasi!</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const motivasi = [
+      "Jangan pernah menyerah, keajaiban terjadi setiap hari!",
+      "Hari ini adalah kesempatan barumu untuk jadi lebih baik.",
+      "Kegagalan itu pelajaran, bukan akhir.",
+      "Lakukan yang terbaik, hasil mengikuti usaha.",
+      "Jangan tunda, mulai sekarang juga!",
+      "Kamu lebih kuat dari apa yang kamu kira.",
+      "Fokus ke proses, bukan cuma hasil.",
+      "Berani gagal itu langkah menuju sukses.",
+      "Hargai progres sekecil apapun.",
+      "Terus bergerak, jangan berhenti.",
+      "wajar saja wajahku burik karena aku bermain dibawah terik bukan dibawah gemerlap lampu diskotik"
+      
+    ];
+
+    function tampilkanMotivasi() {
+      const randomIndex = Math.floor(Math.random() * motivasi.length);
+      const hasilDiv = document.getElementById("hasil");
+      hasilDiv.textContent = motivasi[randomIndex];
+    }
+  </script>
+</body>
+</html>

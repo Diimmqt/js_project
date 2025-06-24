@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tebak Negara</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 40px; }
+    button, input { padding: 10px; font-size: 16px; margin: 10px; }
+    #clue { font-size: 18px; margin: 20px 0; }
+    #hasil { font-size: 22px; font-weight: bold; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h2>Tebak Negara 🌍</h2>
+
+  <button onclick="mulaiTebakan()">🎲 Ambil Clue!</button>
+
+  <div id="clue"></div>
+
+  <input type="text" id="tebakan" placeholder="Tebak nama negara">
+  <br>
+  <button onclick="cekJawaban()">Cek Jawaban</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const soal = [
+      {clue: "Negara dengan Menara Eiffel.", jawaban: "prancis"},
+      {clue: "Negara kepulauan terbesar di Asia Tenggara.", jawaban: "indonesia"},
+      {clue: "Negara asal sushi.", jawaban: "jepang"},
+      {clue: "Negara dengan Big Ben.", jawaban: "inggris"},
+      {clue: "Negara berbendera maple.", jawaban: "kanada"}
+    ];
+
+    let currentJawaban = "";
+
+    function mulaiTebakan() {
+      const randomIndex = Math.floor(Math.random() * soal.length);
+      document.getElementById("clue").textContent = soal[randomIndex].clue;
+      currentJawaban = soal[randomIndex].jawaban;
+      document.getElementById("hasil").textContent = "";
+      document.getElementById("tebakan").value = "";
+    }
+
+    function cekJawaban() {
+      const tebakanUser = document.getElementById("tebakan").value.trim().toLowerCase();
+      const hasilDiv = document.getElementById("hasil");
+
+      if (!currentJawaban) {
+        hasilDiv.textContent = "Ambil clue dulu!";
+        return;
+      }
+
+      if (tebakanUser === currentJawaban) {
+        hasilDiv.textContent = "✅ Benar!";
+      } else {
+        hasilDiv.textContent = `❌ Salah! Jawabannya: ${currentJawaban.toUpperCase()}`;
+      }
+    }
+  </script>
+</body>
+</html>
